@@ -1,0 +1,122 @@
+/* =================================
+  1. EXTERNAL CSS
+  Used for all global styles, layout, fonts, colors, and transitions.
+  This stylesheet defines the main "look and feel" of the website.
+  =================================
+*/
+
+/* --- CSS Variables for easy theme management --- */
+:root {
+    --primary-color: #0d6efd;
+    --secondary-color: #6c757d;
+    --dark-color: #212529;
+    --light-color: #f8f9fa;
+    --font-family: 'Poppins', sans-serif;
+}
+
+/* --- Global & Tag Selectors --- */
+body {
+    font-family: var(--font-family);
+    /* Smooth scrolling for anchor links */
+    scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+}
+
+/* --- Class Selectors & Reusable Components --- */
+
+/* Custom section heading style */
+.section-heading {
+    text-align: center;
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+/* Creates the underline effect */
+.section-heading::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--primary-color);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+/* Custom button style */
+.btn-primary-custom {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+/* Pseudo-class selector for hover */
+.btn-primary-custom:hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+    transform: translateY(-3px); /* Subtle "lift" on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* --- ID Selectors for Page Sections --- */
+
+/* Hero Section Styles */
+#about {
+    background-color: var(--dark-color);
+    color: #fff;
+    min-height: 90vh; /* Makes the hero section tall */
+    display: flex;
+    align-items: center;
+    padding: 4rem 0;
+}
+
+.hero-text .lead {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Advanced: Gradient text effect */
+.gradient-text {
+    background: linear-gradient(90deg, #1e90ff, #00e5ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-image {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 50%;
+    border: 8px solid #444;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Skills Section Styles */
+#skills {
+    background-color: #fff;
+}
+
+.skill-bar-container {
+    background-color: var(--light-color);
+    border-radius: 5px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Contact Section Styles */
+.contact-form {
+    background: #fff;
+    border: 1px solid #e9ecef;
+}
+
+/* Attribute selector for focused form elements */
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}

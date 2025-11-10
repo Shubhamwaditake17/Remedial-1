@@ -1,0 +1,217 @@
+/* --- Global & Variables --- */
+:root {
+    --primary-color: #1a1a1a;
+    --secondary-color: #f8f8f8;
+    --accent-color: #007bff;
+    --border-color: #e0e0e0;
+    --font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    font-family: var(--font-family);
+    margin: 0;
+    background-color: #ffffff;
+    color: var(--primary-color);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- Navigation Bar --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+    background-color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--primary-color);
+    letter-spacing: 1px;
+}
+
+.navbar-nav {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-nav a {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav a:hover {
+    color: var(--accent-color);
+}
+
+.navbar-icons {
+    display: flex;
+    gap: 1rem;
+}
+
+.navbar-icons a {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.navbar-icons a:hover {
+    color: var(--accent-color);
+}
+
+/* --- Shop Layout (CSS Grid) --- */
+.shop-container {
+    display: grid;
+    grid-template-columns: 250px 1fr; /* 250px sidebar, rest for grid */
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* --- Filter Sidebar --- */
+.filter-sidebar {
+    background-color: var(--secondary-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    height: fit-content;
+}
+
+.filter-sidebar h3 {
+    margin-top: 0;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+.filter-group {
+    margin-bottom: 1.5rem;
+}
+
+.filter-group h4 {
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+}
+
+.filter-option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.filter-option label {
+    margin-left: 0.5rem;
+    cursor: pointer;
+}
+
+/* --- Product Grid --- */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+/* --- Product Card (Advanced) --- */
+.product-card {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: #fff;
+    overflow: hidden; /* Key for image zoom effect */
+    position: relative;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.product-card:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+}
+
+.product-image-container {
+    overflow: hidden; /* Hides the part of the image that scales */
+}
+
+.product-image {
+    width: 100%;
+    display: block;
+    transition: transform 0.4s ease; /* Image zoom effect */
+}
+
+.product-card:hover .product-image {
+    transform: scale(1.05);
+}
+
+.product-info {
+    padding: 1rem;
+    text-align: center;
+}
+
+.product-name {
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0 0 0.5rem 0;
+}
+
+.product-price {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin: 0;
+}
+
+/* --- Add to Cart Button (Hover Effect) --- */
+.btn-add-to-cart {
+    position: absolute;
+    bottom: -50px; /* Start hidden below the card */
+    left: 5%;
+    width: 90%;
+    padding: 0.75rem;
+    background-color: var(--primary-color);
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 5px;
+    opacity: 0; /* Start invisible */
+    transition: opacity 0.3s ease, bottom 0.3s ease;
+}
+
+.product-card:hover .btn-add-to-cart {
+    opacity: 1;
+    bottom: 20px; /* Slide into view */
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .shop-container {
+        grid-template-columns: 1fr; /* Stack sidebar and grid */
+    }
+
+    .navbar-nav {
+        display: none; /* Simple mobile solution */
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablet */
+    }
+}
