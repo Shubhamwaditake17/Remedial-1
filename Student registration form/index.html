@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration</title>
+    <!-- Google Fonts (Poppins) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <form id="registration-form" novalidate>
+            <h2>Student Registration</h2>
+
+            <!-- Success Message Placeholder -->
+            <div id="success-message" class="success-message"></div>
+
+            <!-- Row 1: First Name & Last Name -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="first-name">First Name</label>
+                    <input type="text" id="first-name" name="first-name">
+                    <div class="error-message" id="first-name-error"></div>
+                </div>
+                <div class="form-group">
+                    <label for="last-name">Last Name</label>
+                    <input type="text" id="last-name" name="last-name">
+                    <div class="error-message" id="last-name-error"></div>
+                </div>
+            </div>
+
+            <!-- Row 2: Username -->
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username">
+                <div class="error-message" id="username-error"></div>
+            </div>
+
+            <!-- Row 3: Email -->
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email">
+                <div class="error-message" id="email-error"></div>
+            </div>
+
+            <!-- Row 4: Phone -->
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" maxlength="10">
+                <div class="error-message" id="phone-error"></div>
+            </div>
+
+            <!-- Row 5: DOB and Gender -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" id="dob" name="dob">
+                    <div class="error-message" id="dob-error"></div>
+                </div>
+                <div class="form-group" id="gender-group">
+                    <label>Gender</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="gender" value="male"> Male</label>
+                        <label><input type="radio" name="gender" value="female"> Female</label>
+                        <label><input type="radio" name="gender" value="other"> Other</label>
+                    </div>
+                    <div class="error-message" id="gender-error"></div>
+                </div>
+            </div>
+
+            <!-- Row 6: Course Selection -->
+            <div class="form-group">
+                <label for="course">Course</label>
+                <select id="course" name="course">
+                    <option value="">Select a course...</option>
+                    <option value="cs">Computer Science</option>
+                    <option value="eng">Engineering</option>
+                    <option value="arts">Arts & Humanities</option>
+                    <option value="biz">Business</option>
+                </select>
+                <div class="error-message" id="course-error"></div>
+            </div>
+
+            <!-- Row 7: Address -->
+            <div class="form-group">
+                <label for="address">Address</label>
+                <textarea id="address" name="address" rows="3"></textarea>
+                <div class="error-message" id="address-error"></div>
+            </div>
+
+            <!-- Row 8: Password -->
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password">
+                <div class="error-message" id="password-error"></div>
+            </div>
+
+            <!-- Row 9: Confirm Password -->
+            <div class="form-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" name="confirm-password">
+                <div class="error-message" id="confirm-password-error"></div>
+            </div>
+
+            <!-- Row 10: Terms and Conditions -->
+            <div class="form-group" id="terms-group">
+                <div class="checkbox-group">
+                    <input type="checkbox" id="terms" name="terms">
+                    <label for="terms">I agree to the Terms and Conditions</label>
+                </div>
+                <div class="error-message" id="terms-error"></div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+    <!-- Link to the external JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>

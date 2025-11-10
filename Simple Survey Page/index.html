@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Feedback Survey</title>
+    
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+          rel="stylesheet" 
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
+          crossorigin="anonymous">
+    
+    <!-- Google Fonts (Poppins) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- 
+      =================================
+      1. EXTERNAL CSS
+      This is the main stylesheet, linked as required.
+      =================================
+    -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- 
+      =================================
+      2. INTERNAL CSS
+      Used for page-specific styles, as required.
+      Here, we style the form's section headings.
+      =================================
+    -->
+    <style>
+        /* Internal CSS to style form section legends */
+        .form-section-legend {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #0d6efd; /* Bootstrap primary color */
+            border-bottom: 2px solid #eee;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 
+      Header 
+      Styled using an ID selector (#survey-header) in external CSS.
+    -->
+    <header id="survey-header" class="text-center">
+        <h1 class="display-4">Customer Feedback Survey</h1>
+        <p class="lead">Thank you for taking the time to help us improve!</p>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container my-5">
+        <div class="row">
+            <!-- 
+              Bootstrap Grid: On large screens, this is centered
+              and 8 columns wide. On mobile, it's full-width.
+            -->
+            <div class="col-lg-8 mx-auto">
+                
+                <!-- 
+                  Survey Form 
+                  Styled using a CLASS selector (.survey-form) in external CSS.
+                -->
+                <form action="#" method="POST" class="survey-form">
+
+                    <!-- Section 1: Personal Details -->
+                    <fieldset class="mb-4">
+                        <legend class="form-section-legend">Section 1: About You</legend>
+                        <div class="mb-3">
+                            <label for="q1-name" class="form-label">1. Full Name</label>
+                            <input type="text" class="form-control" id="q1-name" required>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-7">
+                                <div class="mb-3">
+                                    <label for="q2-email" class="form-label">2. Email Address</label>
+                                    <input type="email" class="form-control" id="q2-email" required>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="mb-3">
+                                    <label for="q3-age" class="form-label">3. Age</label>
+                                    <input type="number" class="form-control" id="q3-age" min="16" max="100">
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- Section 2: Usage Habits -->
+                    <fieldset class="mb-4">
+                        <legend class="form-section-legend">Section 2: Your Habits</legend>
+                        
+                        <!-- Radio Buttons -->
+                        <div class="mb-3">
+                            <label class="form-label d-block">4. How often do you use our product?</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q4-frequency" id="freq-daily" value="daily">
+                                <label class="form-check-label" for="freq-daily">Daily</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q4-frequency" id="freq-weekly" value="weekly">
+                                <label class="form-check-label" for="freq-weekly">Weekly</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q4-frequency" id="freq-monthly" value="monthly">
+                                <label class="form-check-label" for="freq-monthly">Monthly</label>
+                            </div>
+                        </div>
+
+                        <!-- Dropdown Select -->
+                        <div class="mb-3">
+                            <label for="q5-device" class="form-label">5. What device do you primarily use?</label>
+                            <select class="form-select" id="q5-device">
+                                <option selected>Choose...</option>
+                                <option value="desktop">Desktop Computer</option>
+                                <option value="laptop">Laptop</option>
+                                <option value="mobile">Mobile Phone</option>
+                                <option value="tablet">Tablet</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Checkboxes -->
+                        <div class="mb-3">
+                            <label class="form-label d-block">6. Which features do you use? (Check all that apply)</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="dashboard" id="feat-dash">
+                                <label class="form-check-label" for="feat-dash">Dashboard</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="reports" id="feat-reports">
+                                <label class="form-check-label" for="feat-reports">Reports</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="support" id="feat-support">
+                                <label class="form-check-label" for="feat-support">Support</label>
+                            </div>
+                        </div>
+                        
+                        <!-- More Questions (to reach 20) -->
+                        <div class="mb-3">
+                            <label class="form-label d-block">7. How did you hear about us?</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q7-source" id="src-social">
+                                <label class="form-check-label" for="src-social">Social Media</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q7-source" id="src-friend">
+                                <label class="form-check-label" for="src-friend">Friend or Colleague</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q7-source" id="src-google">
+                                <label class="form-check-label" for="src-google">Google Search</label>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- Section 3: Feedback -->
+                    <fieldset class="mb-4">
+                        <legend class="form-section-legend">Section 3: Your Feedback</legend>
+
+                        <!-- Radio Buttons (Horizontal) -->
+                        <div class="mb-3">
+                            <label class="form-label d-block">8. Overall, how satisfied are you with our product?</label>
+                            <div class="d-flex justify-content-between flex-wrap">
+                                <!-- Grouping radio buttons for styling -->
+                                <div class="form-check">
+                                    <input type="radio" class="form-check-input" name="q8-satisfaction" id="sat-1">
+                                    <label class="form-check-label" for="sat-1">Very Unsatisfied</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="radio" class="form-check-input" name="q8-satisfaction" id="sat-2">
+                                    <label class="form-check-label" for="sat-2">Unsatisfied</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="radio" class="form-check-input" name="q8-satisfaction" id="sat-3">
+                                    <label class="form-check-label" for="sat-3">Neutral</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="radio" class="form-check-input" name="q8-satisfaction" id="sat-4">
+                                    <label class="form-check-label" for="sat-4">Satisfied</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="radio" class="form-check-input" name="q8-satisfaction" id="sat-5">
+                                    <label class="form-check-label" for="sat-5">Very Satisfied</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Textarea -->
+                        <div class="mb-3">
+                            <label for="q9-like" class="form-label">9. What do you like most about the product?</label>
+                            <textarea class="form-control" id="q9-like" rows="3"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="q10-dislike" class="form-label">10. What do you like least about the product?</label>
+                            <textarea class="form-control" id="q10-dislike" rows="3"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="q11-missing" class="form-label">11. What features are we missing?</label>
+                            <textarea class="form-control" id="q11-missing" rows="3"></textarea>
+                        </div>
+                    </fieldset>
+                    
+                    <!-- Section 4: More Questions -->
+                    <fieldset class="mb-4">
+                        <legend class="form-section-legend">Section 4: More About You</legend>
+                        <div class="mb-3">
+                            <label for="q12-job" class="form-label">12. What is your job role?</label>
+                            <input type="text" class="form-control" id="q12-job">
+                        </div>
+                        <div class="mb-3">
+                            <label for="q13-industry" class="form-label">13. What industry do you work in?</label>
+                            <input type="text" class="form-control" id="q13-industry">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label d-block">14. Would you recommend our product?</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="q14-recommend" id="rec-yes">
+                                <label class="form-check-label" for="rec-yes">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="q14-recommend" id="rec-no">
+                                <label class="form-check-label" for="rec-no">No</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label d-block">15. How would you rate our customer support?</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="q15-support" id="sup-1">
+                                <label class="form-check-label" for="sup-1">1</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="q15-support" id="sup-2">
+                                <label class="form-check-label" for="sup-2">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="q15-support" id="sup-3">
+                                <label class="form-check-label" for="sup-3">3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="q15-support" id="sup-4">
+                                <label class="form-check-label" for="sup-4">4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="q15-support" id="sup-5">
+                                <label class="form-check-label" for="sup-5">5 (Excellent)</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label d-block">16. How would you rate our pricing?</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="q16-pricing" id="pr-1">
+                                <label class="form-check-label" for="pr-1">Too High</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="q16-pricing" id="pr-2">
+                                <label class="form-check-label" for="pr-2">Just Right</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="q16-pricing" id="pr-3">
+                                <label class="form-check-label" for="pr-3">A Great Value</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label d-block">17. How was this survey?</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="q17-survey" id="sur-1">
+                                <label class="form-check-label" for="sur-1">Too Long</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="q17-survey" id="sur-2">
+                                <label class="form-check-label" for="sur-2">Just Right</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="q17-survey" id="sur-3">
+                                <label class="form-check-label" for="sur-3">Too Short</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="q18-competitors" class="form-label">18. What competitors did you consider?</label>
+                            <input type="text" class="form-control" id="q18-competitors">
+                        </div>
+                        <div class="mb-3">
+                            <label for="q19-referral" class="form-label">19. Referral Code (Optional)</label>
+                            <input type="text" class="form-control" id="q19-referral">
+                        </div>
+                        <div class="mb-3">
+                            <label for="q20-final" class="form-label">20. Any final comments?</label>
+                            <textarea class="form-control" id="q20-final" rows="3"></textarea>
+                        </div>
+                    </fieldset>
+
+                    <!-- Submit Button -->
+                    <div class="text-center">
+                        <!-- 
+                          =================================
+                          3. INLINE CSS
+                          Used for a single, unique override, as required.
+                          =================================
+                        -->
+                        <button type="submit" 
+                                class="btn btn-primary btn-lg" 
+                                style="padding-left: 3rem; padding-right: 3rem; font-weight: 600;">
+                            Submit Survey
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="
