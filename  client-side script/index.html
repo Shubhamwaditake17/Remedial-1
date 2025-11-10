@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced DOM & jQuery Demo</title>
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Include jQuery from a CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+
+    <header>
+        <h1>DOM & jQuery Manipulation</h1>
+    </header>
+
+    <div class="container">
+        <!--============ CONTENT AREA ============-->
+        <!-- This is the content we will be manipulating -->
+        <main id="content-area">
+            
+            <img id="profile-pic" 
+                 src="https://placehold.co/600x300/007bff/white?text=Profile+Banner" 
+                 alt="A placeholder profile banner">
+
+            <div id="profile-header">
+                <img id="avatar-pic" src="https://placehold.co/100x100/333/white?text=Avatar1" alt="User Avatar">
+                <h2 id="main-title">My Dynamic Profile</h2>
+            </div>
+
+            <div id="bio-section">
+                <p class="content-para">
+                    This is a paragraph with the class "content-para". We will use 
+                    <code>getElementsByClassName</code> to select this.
+                </p>
+                
+                <p class="content-para">
+                    This is another paragraph, also with the "content-para" class.
+                </p>
+
+                <p>
+                    This is a standard <code>&lt;p&gt;</code> tag. We'll use 
+                    <code>getElementsByTagName</code> to select it.
+                </p>
+            </div>
+
+            <h3>Comments</h3>
+            <ul id="comment-list">
+                <li>This is the first comment.</li>
+                <li>This is the second comment.</li>
+            </ul>
+        </main>
+
+        <!--============ CONTROL PANEL ============-->
+        <!-- This panel contains all the buttons to trigger our scripts -->
+        <aside id="control-panel">
+            <h2>Control Panel</h2>
+
+            <!-- === Vanilla JS Section === -->
+            <section class="control-section">
+                <h3>Vanilla JavaScript (DOM)</h3>
+                
+                <button id="btn-change-title">Change Title (innerHTML)</button>
+                <button id="btn-change-paras">Change All &lt;p&gt; Tags (TagName)</button>
+                <button id="btn-highlight-content">Highlight Content (ClassName)</button>
+                <button id="btn-move-img">Move Banner (CSS Position)</button>
+                <button id="btn-change-img">Change Banner (src)</button>
+                <button id="btn-change-avatar">Change Avatar (src)</button>
+                <button id="btn-add-comment">Add Comment (Add Node)</button>
+                <button id="btn-del-comment">Delete First Comment (Delete Node)</button>
+            </section>
+
+            <!-- === jQuery Section === -->
+            <section class="control-section">
+                <h3>jQuery</h3>
+                
+                <button id="jq-btn-text">Change This Button Text</button>
+                <button id="jq-btn-toggle-bio">Toggle Bio (Slide)</button>
+                
+                <label>Set Background URL:</label>
+                <input type="text" id="bg-image-url" value="https://placehold.co/300x200/28a745/white?text=BG">
+                <button id="jq-btn-bg">Set Content Background</button>
+                
+                <form id="jq-form">
+                    <label>Access Form Data:</label>
+                    <input type="text" id="form-name" placeholder="Enter your name">
+                    <button id="jq-btn-form" type="button">Get Form Data</button>
+                </form>
+                
+                <button id="jq-btn-attr">Add Attribute to Banner</button>
+            </section>
+        </aside>
+    </div>
+
+    <!-- Link to the external JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html> 
