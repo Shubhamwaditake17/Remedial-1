@@ -1,0 +1,795 @@
+/*
+=====================================================
+  ADVANCED E-COMMERCE STYLESHEET (500+ LINES)
+  SECTION 1: Root Variables & Theming
+  SECTION 2: Global Resets & Typography
+  SECTION 3: Main App Layout (Header, Footer, Main)
+  SECTION 4: Product Gallery (Grid Layout)
+  SECTION 5: Product Card (Advanced)
+  SECTION 6: Product Card (3D Hover & Content)
+  SECTION 7: Product Card (Button & Badge)
+  SECTION 8: Modal (Overlay & Animations)
+  SECTION 9: Modal (Content Layout)
+  SECTION 10: Modal (Responsive Adjustments)
+  SECTION 11: Keyframe Animations
+  SECTION 12: Utility Classes
+=====================================================
+*/
+
+/* =====================================================
+  SECTION 1: ROOT VARIABLES & THEMING
+  - Defines the entire color palette and design system
+  - Easily change the site's theme here
+=====================================================
+*/
+:root {
+  /* Primary Theme Colors */
+  --color-primary: #007bff;
+  --color-primary-dark: #0056b3;
+  --color-primary-light: #66b0ff;
+
+  /* Neutral Colors */
+  --color-dark: #1a1a2e;
+  --color-mid: #16213e;
+  --color-light: #e9ecef;
+  --color-white: #ffffff;
+  --color-grey: #adb5bd;
+
+  /* Accent & Status Colors */
+  --color-accent: #f39c12;
+  --color-accent-dark: #c87f0a;
+  --color-success: #28a745;
+  --color-danger: #dc3545;
+
+  /* Glassmorphism Effect */
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-blur: 10px;
+  --glass-border: 1px solid rgba(255, 255, 255, 0.2);
+
+  /* Typography */
+  --font-primary: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-secondary: 'Merriweather', 'Georgia', serif;
+  --font-size-base: 16px;
+  --line-height-base: 1.6;
+
+  /* Sizing & Spacing */
+  --spacing-xs: 0.25rem; /* 4px */
+  --spacing-sm: 0.5rem; /* 8px */
+  --spacing-md: 1rem; /* 16px */
+  --spacing-lg: 1.5rem; /* 24px */
+  --spacing-xl: 2rem; /* 32px */
+  --spacing-xxl: 3rem; /* 48px */
+
+  /* Borders & Shadows */
+  --border-radius-sm: 0.25rem;
+  --border-radius-md: 0.5rem;
+  --border-radius-lg: 0.8rem;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.2);
+  --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  /* Transitions */
+  --transition-fast: all 0.2s ease-out;
+  --transition-med: all 0.3s ease-in-out;
+  --transition-slow: all 0.5s ease;
+}
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Merriweather:wght@400;700&display=swap');
+
+/* =====================================================
+  SECTION 2: GLOBAL RESETS & TYPOGRAPHY
+=====================================================
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: var(--font-size-base);
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-primary);
+  line-height: var(--line-height-base);
+  background-color: var(--color-dark);
+  background-image: linear-gradient(
+    180deg,
+    var(--color-dark) 0%,
+    var(--color-mid) 100%
+  );
+  color: var(--color-light);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-primary);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: var(--spacing-md);
+  letter-spacing: -0.5px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+}
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1.5rem;
+}
+
+p {
+  margin-bottom: var(--spacing-md);
+  color: var(--color-grey);
+}
+
+a {
+  color: var(--color-primary-light);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-white);
+  text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  font-family: var(--font-primary);
+  cursor: pointer;
+  border: none;
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  transition: var(--transition-med);
+}
+
+/* =====================================================
+  SECTION 3: MAIN APP LAYOUT (HEADER, FOOTER, MAIN)
+=====================================================
+*/
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden; /* Prevents horizontal scroll from 3D effects */
+}
+
+.app-header {
+  padding: var(--spacing-md) var(--spacing-xl);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  border-bottom: var(--glass-border);
+  box-shadow: var(--shadow-sm);
+  width: 100%;
+  z-index: 100;
+  position: sticky;
+  top: 0;
+}
+
+.app-header h1 {
+  color: var(--color-white);
+  font-size: 1.75rem;
+  margin: 0;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+main {
+  flex-grow: 1;
+  padding: var(--spacing-xl) 0;
+  width: 100%;
+}
+
+main h2 {
+  font-family: var(--font-secondary);
+  font-size: 2.75rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--color-white);
+  margin-bottom: var(--spacing-xxl);
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+/* Decorative underline for main title */
+main h2::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: var(--color-primary);
+  border-radius: 2px;
+  margin: var(--spacing-sm) auto 0;
+  opacity: 0.8;
+}
+
+.app-footer {
+  padding: var(--spacing-lg) var(--spacing-xl);
+  text-align: center;
+  background: var(--color-dark);
+  border-top: 1px solid var(--glass-border);
+  margin-top: var(--spacing-xxl);
+}
+
+.app-footer p {
+  margin: 0;
+  color: var(--color-grey);
+  font-size: 0.9rem;
+}
+
+/* =====================================================
+  SECTION 4: PRODUCT GALLERY (GRID LAYOUT)
+=====================================================
+*/
+.product-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-xl);
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+  /* For 3D card perspective */
+  perspective: 1500px;
+}
+
+/* =====================================================
+  SECTION 5: PRODUCT CARD (ADVANCED)
+  - This is a 3D flip-card on hover.
+  - The front shows the image, the back shows details.
+=====================================================
+*/
+.product-card {
+  /* Set up 3D space */
+  position: relative;
+  min-height: 420px;
+  background: none;
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* This is the inner container that flips */
+.product-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  box-shadow: var(--shadow-lg);
+  border-radius: var(--border-radius-lg);
+}
+
+/* On hover, flip the inner card */
+.product-card:hover .product-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* The front and back faces */
+.product-card-front,
+.product-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+}
+
+/* =====================================================
+  SECTION 6: PRODUCT CARD (CONTENT)
+=====================================================
+*/
+
+/* --- CARD FRONT (Image & Price) --- */
+.product-card-front {
+  background-color: var(--color-mid);
+}
+
+.product-image-container {
+  position: relative;
+  height: 70%;
+  overflow: hidden;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition-slow);
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.1);
+  filter: brightness(1.1);
+}
+
+.product-info {
+  height: 30%;
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+.product-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-white);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.product-price {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-primary-light);
+  margin: var(--spacing-xs) 0 0 0;
+}
+
+/* --- CARD BACK (Details) --- */
+.product-card-back {
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  transform: rotateY(180deg);
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product-category {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-grey);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.product-card-back .product-name {
+  color: var(--color-dark);
+  font-size: 1.4rem;
+  margin-top: var(--spacing-xs);
+  margin-bottom: var(--spacing-sm);
+}
+
+.product-rating {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  color: var(--color-accent);
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: var(--spacing-md);
+}
+
+.product-card-back-desc {
+  font-family: var(--font-secondary);
+  font-size: 0.95rem;
+  color: var(--color-mid);
+  line-height: 1.5;
+  margin-bottom: var(--spacing-md);
+  /* Clamp text to 3 lines */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* =====================================================
+  SECTION 7: PRODUCT CARD (BUTTON & BADGE)
+=====================================================
+*/
+.product-badge {
+  position: absolute;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  background: var(--color-danger);
+  color: var(--color-white);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  z-index: 2;
+  box-shadow: var(--shadow-md);
+  animation: pulse 2s infinite;
+}
+
+.add-to-cart-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  background: var(--color-primary);
+  color: var(--color-white);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: var(--spacing-sm) var(--spacing-md);
+  width: 100%;
+  margin-top: auto; /* Pushes to bottom */
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Shine effect on hover */
+.add-to-cart-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.6s;
+  z-index: -1;
+}
+
+.add-to-cart-btn:hover {
+  background: var(--color-primary-dark);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.add-to-cart-btn:hover::before {
+  left: 100%;
+}
+
+.add-to-cart-btn:active {
+  transform: translateY(0);
+}
+
+.product-card-details-btn {
+  background: transparent;
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+}
+.product-card-details-btn:hover {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+/* =====================================================
+  SECTION 8: MODAL (OVERLAY & ANIMATIONS)
+=====================================================
+*/
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-md);
+  /* Animation for the overlay */
+  animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: var(--color-white);
+  color: var(--color-dark);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-lg);
+  z-index: 1001;
+  /* Animation for the modal */
+  animation: slideInUp 0.4s ease-out;
+}
+
+/* Custom scrollbar for modal */
+.modal-content::-webkit-scrollbar {
+  width: 8px;
+}
+.modal-content::-webkit-scrollbar-track {
+  background: var(--color-light);
+  border-radius: 10px;
+}
+.modal-content::-webkit-scrollbar-thumb {
+  background: var(--color-grey);
+  border-radius: 10px;
+}
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-dark);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  background: var(--color-light);
+  color: var(--color-mid);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  font-size: 1.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  box-shadow: var(--shadow-sm);
+}
+
+.modal-close-btn:hover {
+  background: var(--color-danger);
+  color: var(--color-white);
+  transform: rotate(90deg);
+}
+
+/* =====================================================
+  SECTION 9: MODAL (CONTENT LAYOUT)
+=====================================================
+*/
+.modal-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-xl);
+  padding: var(--spacing-xxl);
+}
+
+.modal-image-container {
+  width: 100%;
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.modal-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-details .product-category {
+  color: var(--color-grey);
+  margin-bottom: var(--spacing-sm);
+}
+
+.modal-product-name {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--color-dark);
+  margin-bottom: var(--spacing-md);
+  line-height: 1.1;
+}
+
+.modal-details .product-rating {
+  font-size: 1.1rem;
+  margin-bottom: var(--spacing-lg);
+}
+
+.modal-product-desc {
+  font-family: var(--font-secondary);
+  font-size: 1rem;
+  line-height: var(--line-height-base);
+  color: #333;
+  margin-bottom: var(--spacing-lg);
+  flex-grow: 1; /* Pushes price/button down */
+}
+
+.modal-product-price {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-lg);
+}
+
+.modal-cart-btn {
+  /* Inherits .add-to-cart-btn */
+  padding: var(--spacing-md) var(--spacing-lg);
+  font-size: 1.1rem;
+}
+
+/* =====================================================
+  SECTION 10: MODAL (RESPONSIVE ADJUSTMENTS)
+=====================================================
+*/
+@media (max-width: 900px) {
+  .modal-body {
+    grid-template-columns: 1fr;
+    padding: var(--spacing-xl);
+  }
+
+  .modal-content {
+    max-height: 95vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-gallery {
+    /* Adjust perspective for smaller screens */
+    perspective: 1000px;
+  }
+
+  .modal-body {
+    padding: var(--spacing-lg);
+  }
+
+  .modal-product-name {
+    font-size: 1.75rem;
+  }
+
+  .modal-product-price {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  main h2 {
+    font-size: 2rem;
+  }
+
+  .modal-content {
+    padding: 0;
+    border-radius: 0;
+    width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+  }
+
+  .modal-body {
+    padding: var(--spacing-md);
+    padding-top: calc(
+      var(--spacing-md) + 50px
+    ); /* Avoid close button */
+  }
+
+  .modal-image-container {
+    height: 250px;
+  }
+}
+
+/* =====================================================
+  SECTION 11: KEYFRAME ANIMATIONS
+=====================================================
+*/
+
+/* Modal Overlay Fade In */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Modal Content Slide In */
+@keyframes slideInUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Badge Pulsing */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(220, 53, 69, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(220, 53, 69, 0);
+  }
+}
+
+/* =====================================================
+  SECTION 12: UTILITY CLASSES
+=====================================================
+*/
+.text-center {
+  text-align: center;
+}
+.text-primary {
+  color: var(--color-primary);
+}
+.mb-0 {
+  margin-bottom: 0;
+}
+/* --- 7. HEADER CART STYLES --- */
+
+.app-header {
+  /* We need to make the header a flex container 
+     to position the cart icon */
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Pushes title and icon apart */
+  padding: 20px 2rem; /* Add side padding */
+  position: sticky; /* Make header stay at top */
+  top: 0;
+  z-index: 100;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 1.5rem; /* Adjust size to fit */
+}
+
+.header-cart {
+  position: relative; /* For positioning the count bubble */
+  cursor: pointer;
+}
+
+.cart-icon {
+  font-size: 1.8rem;
+  color: #fff;
+}
+
+.cart-count {
+  /* This is the red bubble */
+  position: absolute;
+  top: -8px;
+  right: -12px;
+  
+  background-color: #e74c3c; /* Red color */
+  color: white;
+  
+  width: 22px;
+  height: 22px;
+  border-radius: 50%; /* Makes it a circle */
+  
+  /* Center the number */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  font-size: 0.75rem;
+  font-weight: 700;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}

@@ -1,0 +1,340 @@
+/* --- 1. Import Font & Global Reset --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #1a1a2e; /* Dark background */
+  background-image: 
+    radial-gradient(at 20% 20%, hsla(210, 80%, 40%, 0.3) 0px, transparent 50%),
+    radial-gradient(at 80% 80%, hsla(280, 80%, 50%, 0.3) 0px, transparent 50%);
+  color: #e0e0e0;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 5rem;
+}
+
+/* --- 2. Glassmorphism App Container --- */
+.app-container {
+  width: 90%;
+  max-width: 750px;
+  background: rgba(255, 255, 255, 0.05); /* Transparent white */
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  padding: 2.5rem;
+  overflow: hidden; /* For navbar */
+}
+
+/* --- 3. Main Header --- */
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+  border-bottom: none;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -1px;
+}
+
+/* --- 4. Navigation Bar --- */
+.navbar {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 1rem 2.5rem;
+  border-radius: 12px;
+  margin: -2.5rem -2.5rem 2.5rem -2.5rem; /* Full width */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar ul {
+  display: flex;
+  list-style: none;
+}
+
+.navbar li {
+  margin-right: 1.5rem;
+}
+
+.navbar a {
+  color: #c0c0c0;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  padding: 0.5rem 0;
+  position: relative;
+}
+
+.navbar a:after { /* Cool underline effect */
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #00aaff;
+  transition: width 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #ffffff;
+}
+
+.navbar a:hover:after {
+  width: 100%;
+}
+
+/* --- 5. Task Form --- */
+.task-form {
+  display: flex;
+  margin-bottom: 2.5rem;
+}
+
+.task-form input[type='text'] {
+  flex: 1;
+  font-family: 'Inter', sans-serif;
+  padding: 0.9rem 1.2rem;
+  font-size: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px 0 0 8px;
+  background: rgba(0, 0, 0, 0.2);
+  color: #e0e0e0;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.task-form input[type='text']::placeholder {
+  color: #888;
+}
+
+.task-form input[type='text']:focus {
+  background: rgba(0, 0, 0, 0.3);
+  border-color: #00aaff;
+  box-shadow: 0 0 15px rgba(0, 170, 255, 0.3);
+}
+
+.task-form button {
+  padding: 0.9rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  border: none;
+  background: #00aaff;
+  color: white;
+  border-radius: 0 8px 8px 0;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+}
+
+.task-form button:hover {
+  background: #0077ff;
+  box-shadow: 0 0 20px rgba(0, 170, 255, 0.5);
+}
+
+/* --- 6. Task List & Items --- */
+.task-list {
+  list-style-type: none;
+  max-height: 400px;
+  overflow-y: auto; /* Scroll for long lists */
+}
+
+/* Scrollbar styling */
+.task-list::-webkit-scrollbar {
+  width: 8px;
+}
+.task-list::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+.task-list::-webkit-scrollbar-thumb {
+  background: #00aaff;
+  border-radius: 4px;
+}
+.task-list::-webkit-scrollbar-thumb:hover {
+  background: #0077ff;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+  transition: all 0.3s ease;
+  transform: translateX(0);
+}
+
+.task-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateX(5px);
+}
+
+.task-item span {
+  cursor: pointer;
+  flex: 1;
+  margin-right: 1rem;
+  color: #e0e0e0;
+  transition: color 0.3s ease;
+}
+
+/* Completed Task Style */
+.task-item.completed span {
+  text-decoration: line-through;
+  color: #888;
+  font-style: italic;
+}
+
+/* --- 7. Task Buttons (Advanced) --- */
+.task-buttons button {
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+}
+
+/* Complete Button */
+.task-buttons .complete-btn {
+  background: rgba(46, 204, 113, 0.2);
+  border-color: #2ecc71;
+  color: #2ecc71;
+}
+.task-buttons .complete-btn:hover {
+  background: #2ecc71;
+  color: #fff;
+  box-shadow: 0 0 15px rgba(46, 204, 113, 0.5);
+}
+
+/* Undo Button */
+.task-item.completed .complete-btn {
+  background: rgba(243, 156, 18, 0.2);
+  border-color: #f39c12;
+  color: #f39c12;
+}
+.task-item.completed .complete-btn:hover {
+  background: #f39c12;
+  color: #fff;
+  box-shadow: 0 0 15px rgba(243, 156, 18, 0.5);
+}
+
+/* Delete Button */
+.task-buttons .delete-btn {
+  background: rgba(231, 76, 60, 0.2);
+  border-color: #e74c3c;
+  color: #e74c3c;
+}
+.task-buttons .delete-btn:hover {
+  background: #e74c3c;
+  color: #fff;
+  box-shadow: 0 0 15px rgba(231, 76, 60, 0.5);
+}
+
+/* --- 8. "About" Page Specifics --- */
+.about-page-container {
+  line-height: 1.8;
+}
+
+.about-page-container p {
+  font-size: 1.1rem;
+  color: #c0c0c0;
+  margin-bottom: 1.5rem;
+}
+
+.about-page-container ul {
+  margin-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.about-page-container li {
+  font-size: 1.1rem;
+  color: #c0c0c0;
+  margin-bottom: 0.75rem;
+}
+
+.about-page-container strong {
+  color: #00aaff;
+  font-weight: 500;
+}
+
+/* --- 9. Responsiveness --- */
+@media (max-width: 600px) {
+  body {
+    padding-top: 1rem;
+  }
+  
+  .app-container {
+    width: 95%;
+    margin: 1rem auto;
+    padding: 1.5rem;
+  }
+
+  .navbar {
+    padding: 1rem 1.5rem;
+    margin: -1.5rem -1.5rem 1.5rem -1.5rem;
+  }
+
+  .navbar a {
+    font-size: 0.9rem;
+  }
+  .navbar li {
+    margin-right: 1rem;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  .task-form {
+    flex-direction: column;
+  }
+
+  .task-form input[type='text'] {
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+  }
+
+  .task-form button {
+    border-radius: 8px;
+  }
+
+  .task-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .task-item span {
+    margin-bottom: 0.75rem;
+  }
+
+  .task-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .task-buttons button {
+    flex: 1;
+  }
+}
