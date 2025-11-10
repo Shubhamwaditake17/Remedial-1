@@ -1,0 +1,111 @@
+/* src/App.css */
+
+/* --- Global Styles --- */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f4f7f6; /* Light gray background */
+  color: #333;
+  margin: 0;
+}
+
+/* --- Main App Container --- */
+.App {
+  max-width: 800px; /* Constrain width for readability */
+  margin: 40px auto; /* Center the content */
+  padding: 20px;
+  background-color: #ffffff; /* White content area */
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #eee;
+  margin: 30px 0;
+}
+
+a {
+  color: #007bff; /* Standard blue link color */
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  color: #0056b3; /* Darker blue on hover */
+}
+
+/* --- 1. Home Page Styles --- */
+.post-list h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.post-list .intro {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.post-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 20px;
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.post-card:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.post-card h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+}
+
+.post-card h2 a {
+  color: #333; /* Dark title for links */
+}
+
+.post-card h2 a:hover {
+  color: #007bff; /* Blue on hover */
+}
+
+.post-excerpt {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #666;
+}
+
+/* --- 2. Individual Post Page Styles --- */
+.post-page .back-link {
+  display: inline-block;
+  margin-bottom: 25px;
+  font-weight: bold;
+  color: #555;
+}
+
+.post-page .back-link:hover {
+  color: #007bff;
+}
+
+.post-page h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.post-page .post-content {
+  font-size: 1.1rem;      /* Larger font for reading */
+  line-height: 1.8;      /* Taller line spacing */
+  color: #222;
+  text-align: justify;   /* Justified text for a formal look */
+  
+  /* THIS IS IMPORTANT: It respects the newline characters in your post.js strings */
+  white-space: pre-wrap;
+}
